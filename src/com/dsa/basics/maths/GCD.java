@@ -7,7 +7,8 @@ package com.dsa.basics.maths;
 public class GCD {
     public static void main(String[] args) {
         System.out.println(bruteForceSolution(24, 36));
-        System.out.println(optimalSolution(24, 36));
+        System.out.println(optimalSolution(16, 36));
+        System.out.println(recursiveSolution(16, 36));
     }
 
 
@@ -49,5 +50,23 @@ public class GCD {
         }
 
         return n1 == 0 ? n2 : n1;
+    }
+
+    public static int recursiveSolution(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        if (a == 0){
+            return b;
+        }
+        if (b == 0) {
+            return a;
+        }
+
+        if (a > b) {
+            return recursiveSolution(a % b, b);
+        }
+        else {
+            return recursiveSolution(b % a, a);
+        }
     }
 }
